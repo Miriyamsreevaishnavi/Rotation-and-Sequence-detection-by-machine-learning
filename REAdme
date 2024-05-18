@@ -1,4 +1,4 @@
- developed a machine learning model to determine the rotation and sequence of tires using a Random Forest classifier. This model analyzes data to decide the optimal tire rotation pattern. Once the pattern is set, the model can automatically iterate the process for future rotations, improving efficiency and accuracy. This self-learning capability ensures that each subsequent rotation is optimized based on previous data, enhancing tire performance and lifespan.
+Developed a machine learning model to determine the rotation and sequence of tires using a Random Forest classifier. This model analyzes data to decide the optimal tire rotation pattern. Once the pattern is set, the model can automatically iterate the process for future rotations, improving efficiency and accuracy. This self-learning capability ensures that each subsequent rotation is optimized based on previous data, enhancing tire performance and lifespan.
 
 
 
