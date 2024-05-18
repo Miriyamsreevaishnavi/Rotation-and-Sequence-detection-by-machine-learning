@@ -1,0 +1,41 @@
+mport pandas as pd
+import numpy as np
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+from sklearn.model_selection import GridSearchCV
+
+
+data = pd.read_excel("classdata.xlsx")
+X = data[['x ', 'y', 'z']]
+y = data['class']
+
+
+rf_classifier = RandomForestClassifier(n_estimators=100, random_state=42)
+rf_classifier.fit(X, y)
+
+
+param_grid = {
+    'n_estimators':[170, 270, 370],
+    'max_depth':[None, 15, 25],
+    'min_samples_split':[2, 5, 10],
+    'min_samples_leaf':[1, 2, 4]
+}
+grid_search = GridSearchCV(estimator=RandomForestClassifier(), param_grid=param_grid, cv=5, n_jobs=-1, verbose=1)
+grid_search.fit(X, y)
+best_params = grid_search.best_params_
+
+
+y_pred = rf_classifier.predict(X)
+accuracy = accuracy_score(y, y_pred)
+print("Accuracy of the entire model:", accuracy)
+
+
+new_data_points = [
+    [0.03,-0.27,-0.57],
+    [0.97, 2.87, 5.85],
+    [0.9, -2.33, -2.83],
+    [0.45, 1.32, 1.11]
+]
+
+predicted_labels = rf_classifier.predict(new_data_points)
+print("Sequence of predicted labels:", predicted_labels)
